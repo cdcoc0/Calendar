@@ -11,7 +11,6 @@ const Calendar = () => {
         setDates({
             date: new Date()
         });
-        console.log(dates);
     };
 
     useEffect(() => {

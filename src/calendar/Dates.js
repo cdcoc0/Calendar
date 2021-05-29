@@ -32,18 +32,17 @@ const Dates = ({year, month}) => {
         getPrevDates(plDay, plDate, prev);
         getNextDates(tlDay, next);
         setPage(prev.concat(current, next));
-        console.log(page);
-    }, [page, plDay, plDate, tlDay, tlDate]);
+    }, [plDay, plDate, tlDay, tlDate]);
 
     useEffect(() => {
         setPrevLast({date: new Date(year, month, 0)});
         setThisLast({date: new Date(year, month + 1, 0)});
         getPages();
-    }, []);
+    }, [month, getPages]);
 
     return (
         <div>
-            {}
+            {page && page.map((p, index) => <div key={index}>{p}</div>)}
         </div>
     );
 }
