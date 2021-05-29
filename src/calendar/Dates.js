@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
     if(plDay !== 7) {
@@ -41,8 +42,8 @@ const Dates = ({year, month}) => {
     }, [month, getPages]);
 
     return (
-        <div>
-            {page && page.map((p, index) => <div key={index}>{p}</div>)}
+        <div className="Dates">
+            {page && page.map((p, index) => <div key={index} className="date">{p}</div>)}
         </div>
     );
 }

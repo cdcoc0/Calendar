@@ -1,5 +1,22 @@
 .Calendar {
-    .daysArray {
-        display: flex;
-    }
+    background: gray;
+    width: 100%;
+    font-family: "Lucida Console", Helvetica, sans-serif;
+    //padding-left: 3rem;
+    //min-height: 100vh;
+    //height: 100%;
+    //padding: 1rem;
+    .body {
+        padding: 2rem;
+        .daysArray {
+            display: flex;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            border-bottom: 2px solid white;
+            .days {
+                width: calc(100% / 7);
+            }
+        }
+    }   
 }

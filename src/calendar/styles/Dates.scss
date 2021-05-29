@@ -1,0 +1,11 @@
+.Dates {
+    font-family: "Lucida Console", Helvetica, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    height: 460px;
+    .date {
+        width: calc(100% / 7);
+        color: white;
+    }
+}

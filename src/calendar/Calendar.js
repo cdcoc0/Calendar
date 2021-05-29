@@ -23,10 +23,12 @@ const Calendar = () => {
     return (
         <div className="Calendar">
             <Month year={initYear} month={initMonth} />
-            <div className="daysArray">
-                {daysArray.map(d => <div key={d}>{d}</div>)}
+            <div className="body">
+                <div className="daysArray">
+                    {daysArray.map(d => <div key={d} className="days">{d}</div>)}
+                </div>
+                <Dates year={initYear} month={initMonth} />
             </div>
-            <Dates year={initYear} month={initMonth} />
         </div>
     );
 }
