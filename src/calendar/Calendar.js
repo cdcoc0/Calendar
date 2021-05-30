@@ -6,7 +6,7 @@ import './styles/Calendar.scss';
 
 const Calendar = () => {
     const [dates, setDates] = useState({date: new Date()});
-    const daysArray = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const getDates = () => {
         setDates({

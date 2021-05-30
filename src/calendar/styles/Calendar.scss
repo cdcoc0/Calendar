@@ -24,11 +24,19 @@
             .daysArray {
                 display: flex;
                 margin-top: 1rem;
-                font-size: 1.5rem;
+                padding-bottom: 0.5rem;
+                font-size: 1.25rem;
+                font-weight: bold;
                 color: white;
-                border-bottom: 2px solid white;
+                border-bottom: 3px solid white;
                 .days {
                     width: calc(100% / 7);
+                    &:nth-child(7n + 1) {
+                        color: #D13E3E;
+                    }
+                    &:nth-child(7n) {
+                        color: #396EE2;
+                    }
                 }
             }
         }   

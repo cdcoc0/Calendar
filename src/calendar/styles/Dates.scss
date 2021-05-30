@@ -3,10 +3,21 @@
     font-family: "Lucida Console", Helvetica, sans-serif;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     height: 512px;
     .date {
         width: calc(100% / 7);
         color: white;
+        font-size: 1.25rem;
+        font-weight: bold;
+        //cursor: pointer;
+        //border-bottom: 1px solid white;
+        //border-right: 1px solid white;
+        &:nth-child(7n + 1) {
+            color: #D13E3E;
+        }
+        &:nth-child(7n) {
+            color: #396EE2;
+        }
     }
 }

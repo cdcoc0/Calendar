@@ -1,8 +1,9 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import cn from 'classnames';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
-    if(plDay !== 7) {
+    if(plDay !== 6) {
         for(let i = 0; i < plDay + 1; i++) {
             prev.unshift(plDate - i);
         }
@@ -16,9 +17,9 @@ const getNextDates = (tlDay, next) => {
 };
 
 const Dates = ({year, month}) => {
-    
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
+    const [today, setToday] = useState({date: new Date()});
     const [page, setPage] = useState();
 
     const plDate = prevLast.date.getDate();
@@ -43,7 +44,7 @@ const Dates = ({year, month}) => {
 
     return (
         <div className="Dates">
-            {page && page.map((p, index) => <div key={index} className="date">{p}</div>)}
+            {page && page.map((p, index) => <div key={index} className={`date d${index}`}>{p}</div>)}
         </div>
     );
 }
