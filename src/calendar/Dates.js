@@ -19,7 +19,7 @@ const getNextDates = (tlDay, next) => {
 const Dates = ({year, month, date}) => {
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState({date: new Date()});
+    const [today, setToday] = useState();
     const [page, setPage] = useState([]);
 
     const plDate = prevLast.date.getDate();
@@ -40,18 +40,18 @@ const Dates = ({year, month, date}) => {
         setPrevLast({date: new Date(year, month, 0)});
         setThisLast({date: new Date(year, month + 1, 0)});
         getPages();
+        console.log(page);
         setToday({year, month, date});
-    }, [month, getPages]);
+    }, [month, page, getPages]);
 
     const initPage = useCallback(() => {
-        console.log(page);
         const firstDateIndex = page.indexOf(1);
         const lastDateIndex = page.indexOf(tlDate);
         if(!page) {return;}
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
-                    <div key={index} className="dateBlock"><span className="this">{p}</span></div>
+                    <div key={index} className="dateBlock"><span className={`this ${p === today.date ? 'today' : ''}`}>{p}</span></div>
                 )
             } else {
                 return (

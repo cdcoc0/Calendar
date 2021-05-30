@@ -24,6 +24,9 @@
         }
         .this {
             cursor: pointer;
+            &.today {
+                background-color: #c890ff;
+            }
         }
     }
 }
