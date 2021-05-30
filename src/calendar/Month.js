@@ -1,5 +1,5 @@
 import React from 'react';
-import {IoCaretBack, IoCaretForward} from 'react-icons/io5';
+import {MdNavigateBefore, MdNavigateNext} from 'react-icons/md';
 import './styles/Month.scss';
 
 const Month = ({month}) => {
@@ -8,9 +8,9 @@ const Month = ({month}) => {
     return (
         <div className="Header">
             <div className="header-sort">
-                <div className="nav"><IoCaretBack /></div>
+                <div className="nav"><MdNavigateBefore /></div>
                 <div className="month" type="text">{`${formMonth}`}</div>
-                <div className="nav"><IoCaretForward /></div>
+                <div className="nav"><MdNavigateNext /></div>
             </div>
         </div>
     );

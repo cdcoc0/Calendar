@@ -6,17 +6,31 @@
     //min-height: 100vh;
     //height: 100%;
     //padding: 1rem;
-    .body {
-        padding: 2rem;
-        .daysArray {
+    .navSpace {
+        display: flex;
+        .nav {
+            //background: blueviolet;
             display: flex;
-            margin-top: 1rem;
-            font-size: 1.5rem;
+            align-items: center;
             color: white;
-            border-bottom: 2px solid white;
-            .days {
-                width: calc(100% / 7);
-            }
+            font-size: 4rem;
+            margin-right: 1rem;
         }
-    }   
+        .body {
+            padding-top: 2rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            flex: 1;
+            .daysArray {
+                display: flex;
+                margin-top: 1rem;
+                font-size: 1.5rem;
+                color: white;
+                border-bottom: 2px solid white;
+                .days {
+                    width: calc(100% / 7);
+                }
+            }
+        }   
+    }
 }
