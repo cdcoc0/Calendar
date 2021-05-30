@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     margin-top: 1.5rem;
     height: 512px;
-    .date {
+    .dateBlock {
         width: calc(100% / 7);
         color: white;
         font-size: 1.25rem;
@@ -18,6 +18,12 @@
         }
         &:nth-child(7n) {
             color: #396EE2;
+        }
+        .other {
+            opacity: 0.4;
+        }
+        .this {
+            cursor: pointer;
         }
     }
 }

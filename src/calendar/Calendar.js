@@ -20,6 +20,7 @@ const Calendar = () => {
 
     const initYear = dates.date.getFullYear();
     const initMonth = dates.date.getMonth();
+    const initDate = dates.date.getDate();
 
     return (
         <div className="Calendar">
@@ -32,7 +33,7 @@ const Calendar = () => {
                     <div className="daysArray">
                         {daysArray.map(d => <div key={d} className="days">{d}</div>)}
                     </div>
-                    <Dates year={initYear} month={initMonth} />
+                    <Dates year={initYear} month={initMonth} date={initDate} />
                 </div>
             </div>
         </div>

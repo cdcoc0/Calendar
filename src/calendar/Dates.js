@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
@@ -16,11 +16,11 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({year, month}) => {
+const Dates = ({year, month, date}) => {
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
     const [today, setToday] = useState({date: new Date()});
-    const [page, setPage] = useState();
+    const [page, setPage] = useState([]);
 
     const plDate = prevLast.date.getDate();
     const plDay = prevLast.date.getDay();
@@ -40,11 +40,30 @@ const Dates = ({year, month}) => {
         setPrevLast({date: new Date(year, month, 0)});
         setThisLast({date: new Date(year, month + 1, 0)});
         getPages();
+        setToday({year, month, date});
     }, [month, getPages]);
+
+    const initPage = useCallback(() => {
+        console.log(page);
+        const firstDateIndex = page.indexOf(1);
+        const lastDateIndex = page.indexOf(tlDate);
+        if(!page) {return;}
+        return (page.map((p, index) => {
+            if(index >= firstDateIndex && index < lastDateIndex + 1) {
+                return (
+                    <div key={index} className="dateBlock"><span className="this">{p}</span></div>
+                )
+            } else {
+                return (
+                    <div key={index} className="dateBlock"><span className="other">{p}</span></div>
+                );
+            }
+        }));
+    }, [page, tlDate]);
 
     return (
         <div className="Dates">
-            {page && page.map((p, index) => <div key={index} className={`date d${index}`}>{p}</div>)}
+            {initPage()}
         </div>
     );
 }
