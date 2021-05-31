@@ -22,19 +22,18 @@ const Dates = ({year, month, date}) => {
     const [today, setToday] = useState();
     const [page, setPage] = useState([]);
 
-    const plDate = prevLast.date.getDate();
-    const plDay = prevLast.date.getDay();
-    const tlDate = thisLast.date.getDate();
-    const tlDay = thisLast.date.getDay();
-
     const getPages = useCallback(() => {
+        const plDate = prevLast.date.getDate();
+        const plDay = prevLast.date.getDay();
+        const tlDate = thisLast.date.getDate();
+        const tlDay = thisLast.date.getDay();
         const prev = [];
         const current = [...Array(tlDate + 1).keys()].slice(1);
         const next = [];
         getPrevDates(plDay, plDate, prev);
         getNextDates(tlDay, next);
         setPage(prev.concat(current, next));
-    }, [plDay, plDate, tlDay, tlDate]);
+    }, [prevLast, thisLast]);
 
     useEffect(() => {
         setPrevLast({date: new Date(year, month, 0)});
@@ -42,16 +41,17 @@ const Dates = ({year, month, date}) => {
         getPages();
         console.log(page);
         setToday({year, month, date});
-    }, [month, page, getPages]);
+    }, [month]);
 
     const initPage = useCallback(() => {
         const firstDateIndex = page.indexOf(1);
-        const lastDateIndex = page.indexOf(tlDate);
+        const lastDateIndex = page.indexOf(thisLast.date.getDate());
         if(!page) {return;}
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
+                //console.log(p);
                 return (
-                    <div key={index} className="dateBlock"><span className={`this ${p === today.date ? 'today' : ''}`}>{p}</span></div>
+                    <div key={index} className="dateBlock"><div onClick={() => setToday({...today, date: p})} className="this"><span className={`${p === today.date ? 'today' : ''}`}>{p}</span></div></div>
                 )
             } else {
                 return (
@@ -59,7 +59,7 @@ const Dates = ({year, month, date}) => {
                 );
             }
         }));
-    }, [page, tlDate]);
+    }, [page, thisLast, today]);
 
     return (
         <div className="Dates">
