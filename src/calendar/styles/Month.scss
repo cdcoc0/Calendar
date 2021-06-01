@@ -10,21 +10,19 @@
     font-size: 2rem;
     justify-content: space-evenly;
     color: #8a2ce7;
-    .header-sort {
-        // display: flex;
-        // align-items: center;
-        .month {
-            margin: 0 1.5rem;
+    .month {
+        width: 250px;
+        display: flex;
+        justify-content: center;
+    }
+    svg {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            border-radius: 5px;
+            color: rgb(228, 228, 228);
+            box-shadow: 1px 1px 10px rgb(228, 228, 228);
         }
-        svg {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            &:hover {
-                border-radius: 5px;
-                color: rgb(228, 228, 228);
-                box-shadow: 1px 1px 10px rgb(228, 228, 228);
-            }
-        }
-    }    
+    }  
 }
