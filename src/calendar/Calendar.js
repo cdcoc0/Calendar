@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
+import Background from './Background';
 import Month from './Month';
 import Dates from './Dates';
 import {MdNavigateBefore} from 'react-icons/md';
@@ -39,6 +40,7 @@ const Calendar = () => {
     // const initDate = dates.date.getDate();
     return (
         <div className="Calendar">
+            <Background />
             <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
             <div className="navSpace">
                 <div className="nav">

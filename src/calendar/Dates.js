@@ -39,7 +39,7 @@ const Dates = ({info}) => {
         const firstDateIndex = page.indexOf(1);
         const lastDateIndex = page.lastIndexOf(thisLast.date.getDate());
         if(!page) {return;}
-        //console.log(firstDateIndex, lastDateIndex);
+        console.log(firstDateIndex, lastDateIndex);
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
@@ -52,6 +52,7 @@ const Dates = ({info}) => {
             }
         }));
     }, [page, thisLast, today]);
+    //월이랑 일이 안맞음(렌더링이 하나씩 느린듯), year 바뀌면 오류 발생
 
     useEffect(() => {
         setPrevLast({date: new Date(year, month, 0)});

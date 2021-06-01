@@ -7,7 +7,7 @@
     height: 512px;
     .dateBlock {
         width: calc(100% / 7);
-        color: white;
+        color: #ab57ff;
         font-size: 1.25rem;
         font-weight: bold;
         //border-bottom: 1px solid white;
@@ -19,7 +19,7 @@
             color: #396EE2;
         }
         .other {
-            opacity: 0.4;
+            opacity: 0.3;
         }
         .this {
             cursor: pointer;
