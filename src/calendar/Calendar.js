@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Month from './Month';
 import Dates from './Dates';
 import {MdNavigateBefore} from 'react-icons/md';
@@ -6,34 +6,49 @@ import './styles/Calendar.scss';
 
 const Calendar = () => {
     const [dates, setDates] = useState({date: new Date()});
+    const [info, setInfo] = useState({year: dates.date.getFullYear(), month: dates.date.getMonth(), date: dates.date.getDate()});
     const daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    const getDates = () => {
+    const getDates = useCallback(() => {
         setDates({
             date: new Date()
         });
-    };
+        setInfo({
+            year: dates.date.getFullYear(),
+            month: dates.date.getMonth(),
+            date: dates.date.getDate()
+        });
+    }, []);
+
+    const onMonthIncrease = useCallback(() => {
+        console.log('increase');
+        setInfo({...info, month: info.month + 1});
+    }, [info])
+
+    const onMonthDecrease = useCallback(() => {
+        console.log('decrease');
+        setInfo({...info, month: info.month - 1});
+    }, [info])
 
     useEffect(() => {
         getDates();
     }, []);
 
-    const initYear = dates.date.getFullYear();
-    const initMonth = dates.date.getMonth();
-    const initDate = dates.date.getDate();
-
+    // const initYear = dates.date.getFullYear();
+    // const initMonth = dates.date.getMonth();
+    // const initDate = dates.date.getDate();
     return (
         <div className="Calendar">
-            <Month year={initYear} month={initMonth} />
+            <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
             <div className="navSpace">
                 <div className="nav">
-                        <MdNavigateBefore />
+                    <MdNavigateBefore />
                 </div>
                 <div className="body">
                     <div className="daysArray">
                         {daysArray.map(d => <div key={d} className="days">{d}</div>)}
                     </div>
-                    <Dates year={initYear} month={initMonth} date={initDate} />
+                    <Dates info={info} />
                 </div>
             </div>
         </div>

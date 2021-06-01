@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import classNames from 'classnames';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
@@ -16,13 +15,14 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({year, month, date}) => {
+const Dates = ({info}) => {
+    const {year, month, date} = info;
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState();
+    const [today, setToday] = useState({year, month: month + 1, date});
     const [page, setPage] = useState([]);
 
-    const getPages = useCallback(() => {
+    const getPage = useCallback(() => {
         const plDate = prevLast.date.getDate();
         const plDay = prevLast.date.getDay();
         const tlDate = thisLast.date.getDate();
@@ -35,24 +35,16 @@ const Dates = ({year, month, date}) => {
         setPage(prev.concat(current, next));
     }, [prevLast, thisLast]);
 
-    useEffect(() => {
-        setPrevLast({date: new Date(year, month, 0)});
-        setThisLast({date: new Date(year, month + 1, 0)});
-        getPages();
-        console.log(page);
-        setToday({year, month, date});
-    }, [month]);
-
     const initPage = useCallback(() => {
         const firstDateIndex = page.indexOf(1);
-        const lastDateIndex = page.indexOf(thisLast.date.getDate());
+        const lastDateIndex = page.lastIndexOf(thisLast.date.getDate());
         if(!page) {return;}
+        //console.log(firstDateIndex, lastDateIndex);
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
-                //console.log(p);
                 return (
-                    <div key={index} className="dateBlock"><div onClick={() => setToday({...today, date: p})} className="this"><span className={`${p === today.date ? 'today' : ''}`}>{p}</span></div></div>
-                )
+                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock"><div className="this"><span className={`${p === today.date ? 'today' : ''}`}>{p}</span></div></div>
+                );
             } else {
                 return (
                     <div key={index} className="dateBlock"><span className="other">{p}</span></div>
@@ -60,6 +52,14 @@ const Dates = ({year, month, date}) => {
             }
         }));
     }, [page, thisLast, today]);
+
+    useEffect(() => {
+        setPrevLast({date: new Date(year, month, 0)});
+        setThisLast({date: new Date(year, month + 1, 0)});
+        getPage();
+        //console.log(page);
+        setToday({year, month: month + 1, date});
+    }, [year, month, date]);
 
     return (
         <div className="Dates">
