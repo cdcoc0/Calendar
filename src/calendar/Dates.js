@@ -19,7 +19,7 @@ const Dates = ({info}) => {
     const {year, month, date} = info;
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState({year, month: month + 1, date});
+    const [today, setToday] = useState({date});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -42,8 +42,7 @@ const Dates = ({info}) => {
             setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
         // setPrevLast({date: new Date(year, month, 0)});
         // setThisLast({date: new Date(year, month + 1, 0)});
-        //console.log(page);
-        setToday({year, month: month + 1, date});
+        //setToday({year, month: month + 1, date});
         return () => clearInterval(oneMinCall);
     }, [year, month, date, getPage]);
 
