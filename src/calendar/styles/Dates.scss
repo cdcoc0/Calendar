@@ -8,6 +8,7 @@
     .dateBlock {
         width: calc(100% / 7);
         color: #ab57ff;
+        //color: #AA68A6;
         font-size: 1.25rem;
         font-weight: bold;
         //border-bottom: 1px solid white;
@@ -23,8 +24,15 @@
         }
         .this {
             cursor: pointer;
-            .today {
-                background-color: #c890ff;
+            padding-left: 0.25rem;
+            padding-top: 0.25rem;
+            height: 90px;
+            //background-color: green;
+            &.today {
+                //background-color: #c890ff1f;
+                //background-color: #ffe83c;
+                box-sizing: border-box;
+                border: 1px solid #c890ff8a;
             }
         }
     }

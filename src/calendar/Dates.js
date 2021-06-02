@@ -43,7 +43,7 @@ const Dates = ({info}) => {
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
-                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock"><div className="this"><span className={`${p === today.date ? 'today' : ''}`}>{p}</span></div></div>
+                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock"><div className={`this ${p === today.date ? 'today' : ''}`}>{p}</div></div>
                 );
             } else {
                 return (
