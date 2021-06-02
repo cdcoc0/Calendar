@@ -44,7 +44,7 @@ const Calendar = () => {
             <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
             <div className="navSpace">
                 <div className="nav">
-                    <MdNavigateBefore />
+                    {/* <MdNavigateBefore /> */}
                 </div>
                 <div className="body">
                     <div className="daysArray">

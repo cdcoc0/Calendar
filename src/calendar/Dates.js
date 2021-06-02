@@ -34,12 +34,25 @@ const Dates = ({info}) => {
         getNextDates(tlDay, next);
         setPage(prev.concat(current, next));
     }, [prevLast, thisLast]);
+    
+    useEffect(() => {
+        getPage();
+        const oneMinCall = setInterval(() => {
+            setPrevLast({date: new Date(year, month, 0)});
+            setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
+        // setPrevLast({date: new Date(year, month, 0)});
+        // setThisLast({date: new Date(year, month + 1, 0)});
+        //console.log(page);
+        setToday({year, month: month + 1, date});
+        return () => clearInterval(oneMinCall);
+    }, [year, month, date, getPage]);
 
     const initPage = useCallback(() => {
+        //console.log(page);
         const firstDateIndex = page.indexOf(1);
         const lastDateIndex = page.lastIndexOf(thisLast.date.getDate());
         if(!page) {return;}
-        console.log(firstDateIndex, lastDateIndex);
+        //console.log(firstDateIndex, lastDateIndex);
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
@@ -52,15 +65,7 @@ const Dates = ({info}) => {
             }
         }));
     }, [page, thisLast, today]);
-    //월이랑 일이 안맞음(렌더링이 하나씩 느린듯), year 바뀌면 오류 발생
-
-    useEffect(() => {
-        setPrevLast({date: new Date(year, month, 0)});
-        setThisLast({date: new Date(year, month + 1, 0)});
-        getPage();
-        //console.log(page);
-        setToday({year, month: month + 1, date});
-    }, [year, month, date]);
+    //year 바뀌면 오류 발생
 
     return (
         <div className="Dates">

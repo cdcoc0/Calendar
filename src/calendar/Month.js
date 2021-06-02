@@ -7,11 +7,9 @@ const Month = ({year, month, onIncrease, onDecrease}) => {
     const formMonth = dayjs(`${month + 1}`).format('MMMM')
     return (
         <div className="Header">
-            {/* <div className="header-sort"> */}
-                <div onClick={onDecrease}><IoCaretBackSharp /></div>
-                <div className="month" type="text">{`${formMonth} ${year}`}</div>
-                <div onClick={onIncrease}><IoCaretForwardSharp /></div>
-            {/* </div> */}
+            <div onClick={onDecrease}><IoCaretBackSharp /></div>
+            <div className="month" type="text">{`${formMonth} ${year}`}</div>
+            <div onClick={onIncrease}><IoCaretForwardSharp /></div>
         </div>
     );
 };
