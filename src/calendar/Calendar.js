@@ -23,12 +23,28 @@ const Calendar = () => {
 
     const onMonthIncrease = useCallback(() => {
         console.log('increase');
-        setInfo({...info, month: info.month + 1});
+        if(info.month === 11) {
+            setInfo({
+                ...info,
+                year: info.year + 1,
+                month: 0
+            });
+        } else {
+            setInfo({...info, month: info.month + 1});
+        }
     }, [info])
 
     const onMonthDecrease = useCallback(() => {
         console.log('decrease');
-        setInfo({...info, month: info.month - 1});
+        if(info.month === 0) {
+            setInfo({
+                ...info,
+                year: info.year - 1,
+                month: 11
+            });
+        } else {
+            setInfo({...info, month: info.month - 1});
+        }
     }, [info])
 
     useEffect(() => {
