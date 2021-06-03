@@ -6,40 +6,26 @@
     bottom: 0;
     left: 0;
     z-index: 99;
-    //background-color: black;
     //background-color: rgba(0, 0, 0, 0.6);
     &.openModal {
         display: flex;
         animation: modal-bg-show .3s;
         section {
+            height: 300px;
+            width: 90%;
+            max-width: 450px;
+            //margin: 200px auto;
             animation: modal-show .3s;
             font-family: verdana, sans-serif;
-            // header {
-            //     //position: relative;
-            //     background-color: #f1f1f1;
-            //     font-weight: 700;
-            //     display: flex;
-            //     .header-text {
-            //         flex: 1;
-            //         display: flex;
-            //         padding: 1rem;
-            //     }
-            //     .close {
-            //         background: none;
-            //         outline: none;
-            //         border: none;
-            //         cursor: pointer;
-            //         padding: 1rem;
-            //         font-size: 1rem;
-            //         color: #999;
-            //     }
-            // }
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 4px;    
+            //overflow: hidden;
             form {
                 display: flex;
                 margin-top: 1rem;
-                //margin-bottom: 1rem;
-                width: 80%;
+                //width: 80%;
                 padding: 0 1rem;
+                justify-content: center;
                 input {
                     background: none;
                     outline: none;
@@ -58,14 +44,18 @@
                     margin-left: 0.5rem;
                     font-size: 1.5rem;
                     cursor: pointer;
+                    &:hover {
+                        background: #be80fc;
+                    }
                 }
 
             }
             .list{
-                //background-color: green;
+                padding: 0 1rem;
                 font-size: 1rem;
                 margin: 1rem 0;
-                height: 150px;
+                height: 180px;
+                border-bottom: 1px solid #c890ff;
             }
             footer {
                 display: flex;
@@ -75,10 +65,16 @@
                     outline: none;
                     border: none;
                     padding: 0.25rem 0.5rem;
-                    border: 1px solid #c890ff;
+                    //border: 1px solid #c890ff;
+                    background: #c890ff;
                     border-radius: 4px;
                     cursor: pointer;
                     font-size: 1rem;
+                    color: white;
+                    font-weight: bold;
+                    &:hover {
+                        background: #be80fc;
+                    }
                 }
             }
         }
