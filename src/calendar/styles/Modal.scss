@@ -28,7 +28,7 @@
                 justify-content: center;
                 align-items: center;
                 font-size: 1rem;
-                padding: 0.75 0;
+                padding:0.5rem 0;
                 .dateinfo {
                     margin-top: 1rem;
                     color: #52198b;
@@ -41,17 +41,21 @@
                 //width: 80%;
                 padding: 1.5rem 1rem;
                 justify-content: center;
-                border-top: 1px solid #b6b7b9;
+                border-top: 1px solid #cacbcc;
                 input {
                     background: none;
                     outline: none;
                     border: none;
-                    padding-left: 0.5rem;
+                    padding-left: 1rem;
                     background: #f9f4ff;
                     font-size: 1rem;
                     //border: 2px solid #c890ff;
+                    &::placeholder {
+                        color: rgb(175, 175, 175);
+                        font-style: italic;
+                    }
                 }
-                .insert {
+                .insert-btn {
                     background: none;
                     outline: none;
                     border: none;
@@ -73,7 +77,7 @@
                 font-size: 1rem;
                 margin: 1rem 0;
                 max-height: 50%;
-                overflow: hidden;
+                overflow-y: auto;
                 color: #3d3d3d;
                 flex: 1;
             }
@@ -83,7 +87,7 @@
                 background-color: #c890ff;
                 border-bottom-left-radius: 8px;
                 border-bottom-right-radius: 8px;
-                .footer-btn {
+                .close-btn {
                     background: none;
                     outline: none;
                     border: none;
@@ -92,11 +96,11 @@
                     //margin-bottom: 1rem;
                     //border: 1px solid #c890ff;
                     background: #c890ff;
-                    border-radius: 4px;
+                    border-bottom-left-radius: 8px;
+                    border-bottom-right-radius: 8px;
                     cursor: pointer;
                     font-size: 1rem;
                     color: white;
-                    //font-weight: bold;
                     &:hover {
                         background: #be80fc;
                     }
