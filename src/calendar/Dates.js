@@ -22,15 +22,6 @@ const Dates = ({info, openModal}) => {
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
     const [today, setToday] = useState({date});
     const [page, setPage] = useState([]);
-    // const [modalOpen, setModalOpen] = useState(false);
-
-    // const openModal = () => {
-    //     setModalOpen(true);
-    // };
-
-    // const closeModal = () => {
-    //     setModalOpen(false);
-    // };
 
     const getPage = useCallback(() => {
         const plDate = prevLast.date.getDate();
@@ -50,8 +41,6 @@ const Dates = ({info, openModal}) => {
         const oneMinCall = setInterval(() => {
             setPrevLast({date: new Date(year, month, 0)});
             setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
-        // setPrevLast({date: new Date(year, month, 0)});
-        // setThisLast({date: new Date(year, month + 1, 0)});
         //setToday({year, month: month + 1, date});
         return () => clearInterval(oneMinCall);
     }, [year, month, date, getPage]);

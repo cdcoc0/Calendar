@@ -3,56 +3,63 @@
     position: fixed;
     top: 0;
     right: 0;
-    //bottom: 0;
+    bottom: 0;
     left: 0;
     z-index: 99;
-    //background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.2);
     &.openModal {
         display: flex;
         animation: modal-bg-show .3s;
         section {
             width: 90%;
             max-width: 400px;
-            //max-height: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
             margin: 200px auto;
-            animation: modal-show .3s;
             font-family: verdana, sans-serif;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 4px;    
+            background-color: white;
+            border-radius: 8px;    
+            //#ff4d4d
             //overflow: hidden;
+            animation: modal-show .3s;
             header {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 font-size: 1rem;
+                padding: 0.75 0;
                 .dateinfo {
-                    margin-top: 0.5rem;
-                    color: white;
+                    margin-top: 1rem;
+                    color: #52198b;
                     font-weight: bold;
                 }
             };
-
             form {
                 display: flex;
                 margin-top: 1rem;
                 //width: 80%;
-                padding: 0 1rem;
+                padding: 1.5rem 1rem;
                 justify-content: center;
+                border-top: 1px solid #b6b7b9;
                 input {
                     background: none;
                     outline: none;
                     border: none;
-                    padding: 0.25rem;
-                    background-color: white;
+                    padding-left: 0.5rem;
+                    background: #f9f4ff;
                     font-size: 1rem;
-                    border: 2px solid #c890ff;
+                    //border: 2px solid #c890ff;
                 }
                 .insert {
                     background: none;
                     outline: none;
                     border: none;
                     background-color: #c890ff;
+                    padding-right: 0.5rem;
+                    padding-left: 0.5rem;
                     color: white;
-                    margin-left: 0.5rem;
+                    margin-left: 0.75rem;
                     font-size: 1.5rem;
                     cursor: pointer;
                     &:hover {
@@ -66,19 +73,23 @@
                 font-size: 1rem;
                 margin: 1rem 0;
                 max-height: 50%;
-                //border-bottom: 1px solid #c890ff;
                 overflow: hidden;
-                color: white;
+                color: #3d3d3d;
+                flex: 1;
             }
             footer {
                 display: flex;
                 justify-content: center;
+                background-color: #c890ff;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
                 .footer-btn {
                     background: none;
                     outline: none;
                     border: none;
-                    padding: 0.25rem 0.5rem;
-                    margin-bottom: 1rem;
+                    flex: 1;
+                    padding: 0.75rem 0;
+                    //margin-bottom: 1rem;
                     //border: 1px solid #c890ff;
                     background: #c890ff;
                     border-radius: 4px;
