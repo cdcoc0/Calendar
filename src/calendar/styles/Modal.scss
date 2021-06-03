@@ -1,0 +1,106 @@
+.Modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    //background-color: black;
+    //background-color: rgba(0, 0, 0, 0.6);
+    &.openModal {
+        display: flex;
+        animation: modal-bg-show .3s;
+        section {
+            animation: modal-show .3s;
+            font-family: verdana, sans-serif;
+            // header {
+            //     //position: relative;
+            //     background-color: #f1f1f1;
+            //     font-weight: 700;
+            //     display: flex;
+            //     .header-text {
+            //         flex: 1;
+            //         display: flex;
+            //         padding: 1rem;
+            //     }
+            //     .close {
+            //         background: none;
+            //         outline: none;
+            //         border: none;
+            //         cursor: pointer;
+            //         padding: 1rem;
+            //         font-size: 1rem;
+            //         color: #999;
+            //     }
+            // }
+            form {
+                display: flex;
+                margin-top: 1rem;
+                //margin-bottom: 1rem;
+                width: 80%;
+                padding: 0 1rem;
+                input {
+                    background: none;
+                    outline: none;
+                    border: none;
+                    padding: 0.25rem;
+                    background-color: white;
+                    font-size: 1rem;
+                    border: 2px solid #c890ff;
+                }
+                .insert {
+                    background: none;
+                    outline: none;
+                    border: none;
+                    background-color: #c890ff;
+                    color: white;
+                    margin-left: 0.5rem;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+
+            }
+            .list{
+                //background-color: green;
+                font-size: 1rem;
+                margin: 1rem 0;
+                height: 150px;
+            }
+            footer {
+                display: flex;
+                justify-content: center;
+                .footer-btn {
+                    background: none;
+                    outline: none;
+                    border: none;
+                    padding: 0.25rem 0.5rem;
+                    border: 1px solid #c890ff;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes modal-bg-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

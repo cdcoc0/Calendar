@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import Todos from './Todos';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
@@ -15,12 +16,21 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({info}) => {
+const Dates = ({info, openModal}) => {
     const {year, month, date} = info;
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
     const [today, setToday] = useState({date});
     const [page, setPage] = useState([]);
+    // const [modalOpen, setModalOpen] = useState(false);
+
+    // const openModal = () => {
+    //     setModalOpen(true);
+    // };
+
+    // const closeModal = () => {
+    //     setModalOpen(false);
+    // };
 
     const getPage = useCallback(() => {
         const plDate = prevLast.date.getDate();
@@ -55,7 +65,12 @@ const Dates = ({info}) => {
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
-                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock"><div className={`this ${p === today.date ? 'today' : ''}`}>{p}</div></div>
+                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock">
+                        <div className={`this ${p === today.date ? 'today' : ''}`} onDoubleClick={openModal}>
+                            {p}
+                            <div className="todo"></div>
+                        </div>
+                    </div>
                 );
             } else {
                 return (
@@ -63,8 +78,7 @@ const Dates = ({info}) => {
                 );
             }
         }));
-    }, [page, thisLast, today]);
-    //year 바뀌면 오류 발생
+    }, [page, thisLast, today, openModal]);
 
     return (
         <div className="Dates">

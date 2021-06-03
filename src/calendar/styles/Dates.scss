@@ -7,7 +7,7 @@
     height: 512px;
     .dateBlock {
         width: calc(100% / 7);
-        color: #ab57ff;
+        color: #8000ff;
         //color: #AA68A6;
         font-size: 1.25rem;
         font-weight: bold;
@@ -33,6 +33,9 @@
                 //background-color: #ffe83c;
                 box-sizing: border-box;
                 border: 1px solid #c890ff8a;
+            }
+            .todo {
+                background-color: pink;
             }
         }
     }

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import Background from './Background';
 import Month from './Month';
 import Dates from './Dates';
+import Modal from './Modal';
 import {MdNavigateBefore} from 'react-icons/md';
 import './styles/Calendar.scss';
 
@@ -9,6 +10,15 @@ const Calendar = () => {
     const [dates, setDates] = useState({date: new Date()});
     const [info, setInfo] = useState({year: dates.date.getFullYear(), month: dates.date.getMonth(), date: dates.date.getDate()});
     const daysArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const [modalCtrl, setModalCtrl] = useState(false);
+
+    const openModal = () => {
+        setModalCtrl(true);
+    };
+
+    const closeModal = () => {
+        setModalCtrl(false);
+    };
 
     const getDates = useCallback(() => {
         setDates({
@@ -57,6 +67,7 @@ const Calendar = () => {
     return (
         <div className="Calendar">
             <Background />
+            <Modal open={modalCtrl} close={closeModal} />
             <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
             <div className="navSpace">
                 <div className="nav">
@@ -66,7 +77,7 @@ const Calendar = () => {
                     <div className="daysArray">
                         {daysArray.map(d => <div key={d} className="days">{d}</div>)}
                     </div>
-                    <Dates info={info} />
+                    <Dates info={info} openModal={openModal} />
                 </div>
             </div>
         </div>
