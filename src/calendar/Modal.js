@@ -6,10 +6,9 @@ const Modal = ({open, close}) => {
         <div className={`Modal ${open ? 'openModal' : null}`}>
             {open && (
                 <section>
-                    {/* <header>
-                        <div className="header-text">Schedule</div>
-                        <button className="close" onClick={close}>X</button>
-                    </header> */}
+                    <header>
+                        <div className="dateinfo">Oct 20 (Thu) 2021</div>
+                    </header>
                     <form>
                         <input type="text" placeholder="todo" />
                         <button className="insert">+</button>

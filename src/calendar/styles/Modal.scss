@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
+    //bottom: 0;
     left: 0;
     z-index: 99;
     //background-color: rgba(0, 0, 0, 0.6);
@@ -11,15 +11,26 @@
         display: flex;
         animation: modal-bg-show .3s;
         section {
-            height: 300px;
             width: 90%;
-            max-width: 450px;
-            //margin: 200px auto;
+            max-width: 400px;
+            //max-height: 300px;
+            margin: 200px auto;
             animation: modal-show .3s;
             font-family: verdana, sans-serif;
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 4px;    
             //overflow: hidden;
+            header {
+                display: flex;
+                justify-content: center;
+                font-size: 1rem;
+                .dateinfo {
+                    margin-top: 0.5rem;
+                    color: white;
+                    font-weight: bold;
+                }
+            };
+
             form {
                 display: flex;
                 margin-top: 1rem;
@@ -54,8 +65,10 @@
                 padding: 0 1rem;
                 font-size: 1rem;
                 margin: 1rem 0;
-                height: 180px;
-                border-bottom: 1px solid #c890ff;
+                max-height: 50%;
+                //border-bottom: 1px solid #c890ff;
+                overflow: hidden;
+                color: white;
             }
             footer {
                 display: flex;
@@ -65,13 +78,14 @@
                     outline: none;
                     border: none;
                     padding: 0.25rem 0.5rem;
+                    margin-bottom: 1rem;
                     //border: 1px solid #c890ff;
                     background: #c890ff;
                     border-radius: 4px;
                     cursor: pointer;
                     font-size: 1rem;
                     color: white;
-                    font-weight: bold;
+                    //font-weight: bold;
                     &:hover {
                         background: #be80fc;
                     }
@@ -84,11 +98,11 @@
 @keyframes modal-show {
     from {
         opacity: 0;
-        margin-top: -50px;
+        margin-top: 150px;
     }
     to {
         opacity: 1;
-        margin-top: 0;
+        margin-top:200;
     }
 }
 
