@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import ModalItem from './ModalItem';
-
+import {TodayConsumer} from '../contexts/today';
 import './styles/Modal.scss';
 
 //날짜정보 가져와야 함 -> 리덕스 필요
@@ -33,7 +33,11 @@ const Modal = ({open, close}) => {
             {open && (
                 <section>
                     <header>
-                        <div className="dateinfo">2021-10-20 (Wed)</div>
+                        <TodayConsumer>
+                            {({state})=> (<div className="dateinfo">
+                                {`${state.todayYear}-${state.todayMonth < 10 ? `0${state.todayMonth}` : state.todayMonth}-${state.todayDate < 10 ? `0${state.todayDate}` : state.todayDate}`}
+                            </div>)}
+                        </TodayConsumer>
                     </header>
                     <form onSubmit={onSubmit}>
                         <input type="text" placeholder="todo" value={modalValue} onChange={onChange} />

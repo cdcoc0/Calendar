@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
+import {TodayConsumer} from '../contexts/today';
 import Todos from './Todos';
 import './styles/Dates.scss';
 
@@ -20,7 +21,7 @@ const Dates = ({info, openModal}) => {
     const {year, month, date} = info;
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState({date});
+    const [today, setToday] = useState({year, month, date});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -55,10 +56,15 @@ const Dates = ({info, openModal}) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
                     <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock">
-                        <div className={`this ${p === today.date ? 'today' : ''}`} onDoubleClick={openModal}>
-                            {p}
-                            <div className="todo"></div>
-                        </div>
+                        <TodayConsumer>
+                            {({actions}) => (
+                            <div className={`this ${p === today.date ? 'today' : ''}`} 
+                            onDoubleClick={() => {openModal(); actions.setTodayYear(today.year); actions.setTodayMonth(today.month + 1); actions.setTodayDate(`${p}`)}}>
+                                {p}
+                                <div className="todo"></div>
+                            </div>
+                            )}
+                        </TodayConsumer>
                     </div>
                 );
             } else {

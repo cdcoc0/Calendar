@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
+import {TodayProvider} from '../contexts/today';
 import Background from './Background';
 import Month from './Month';
 import Dates from './Dates';
@@ -65,22 +66,24 @@ const Calendar = () => {
     // const initMonth = dates.date.getMonth();
     // const initDate = dates.date.getDate();
     return (
-        <div className="Calendar">
-            <Background />
-            <Modal open={modalCtrl} close={closeModal} />
-            <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
-            <div className="navSpace">
-                <div className="nav">
-                    {/* <MdNavigateBefore /> */}
-                </div>
-                <div className="body">
-                    <div className="daysArray">
-                        {daysArray.map(d => <div key={d} className="days">{d}</div>)}
+        <TodayProvider>
+            <div className="Calendar">
+                <Background />
+                <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
+                <div className="navSpace">
+                    <div className="nav">
+                        {/* <MdNavigateBefore /> */}
                     </div>
-                    <Dates info={info} openModal={openModal} />
+                    <div className="body">
+                        <div className="daysArray">
+                            {daysArray.map(d => <div key={d} className="days">{d}</div>)}
+                        </div>
+                        <Dates info={info} openModal={openModal} />
+                    </div>
                 </div>
+                <Modal open={modalCtrl} close={closeModal} />
             </div>
-        </div>
+        </TodayProvider>
     );
 }
 
