@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# 📆 Calendar-React-Datejs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Developing calendar with Date.js
+<br />
+<br />
 
-## Available Scripts
+## 📸 Screenshots
 
-In the project directory, you can run:
+<div>
+  <img width="800" height="400" src="https://user-images.githubusercontent.com/61813428/120801989-dc71e380-c57c-11eb-84e2-dcc90e84814c.png">
+</div>
+<div>
+  <img width="800" height="400" src="https://user-images.githubusercontent.com/61813428/120801997-e09e0100-c57c-11eb-8058-540073e90c16.png">
+</div>
+<br /><br />
 
-### `yarn start`
+## 🌎 URL
+<https://cdcoc0.github.io/calendar-react-datejs/> <br />
+[CLICK HERE🙋‍♀️](https://cdcoc0.github.io/calendar-react-datejs/)
+<br /><br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🧾 Description
+Date.js 객체로 달력 구현
+- 이번 달 달력에 포함되는 지난 달의 마지막 주, 다음 달의 첫 주는 글자색을 연하게 설정
+- 날짜를 클릭하면 해당 날짜로 포커스 이동
+- 포커스 설정된 날짜를 더블클릭하면 일정을 등록하는 모달 창 팝업
+- 모달은 라이브러리 없이 구현
+<br /><br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📂APIs・Libs
+### -Date
+- Date.js로 날짜 정보를 가져옴
+- Day.js를 사용해 날짜 정보의 포맷 설정
+<br />
 
-### `yarn test`
+### -Context API
+- 모달에서 포커스된 날짜 정보를 구하기 위해 useContext로 현재 날짜 상태 관리
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### -CSS
+- SCSS 사용
+<br /><br />
 
-### `yarn build`
+## 🎓 What I've learned
+### -Rendering
+Date 객체가 무한 렌더링을 야기해 이를 관리하는 과정에서 렌더링이라는 개념에 조금 더 가까워졌다. 라이프사이클 메서드나 복잡한 hook 들을 왜 사용하는 지 이해할 수 있었고,  렌더링 최적화의 중요성을 알 수 있었다.
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### -Global State Management
+거의 모든 컴포넌트에서 Date 객체를 필요로 했기 때문에 useContext를 사용해 전역적으로 사용되는 상태 관리 방법과 그 중요성을 배웠다.
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### -Developing UI
+내가 구상한 화면을 실제로 구현하는데 걸리는 시간이 점점 단축되고 있음을 느낀다. 
+<br /> 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### -Modal
+모달창은 처음 만들어보는 것이었기 때문에 라이브러리를 사용하지 않고 직접 구현해 보았다. 
+<br /><br />
 
-### `yarn eject`
+## 🔧 What needs to be improved
+### -DB
+DB 연동 없이 만들었기 때문에 데이터를 저장할 수가 없어 구현할 수 있는 기능이 한정적이었다. Momentum과 합치는 과정에서 Firebase를 사용해 날짜별로 일정을 저장해 보여주는 기능을 추가할 예정이다.
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### -Date.js
+Date 객체의 무한 렌더링 때문에 setInterval을 설정할 수밖에 없었는데, 굉장히 큰 자원 낭비라고 느꼈다. 후에 백엔드로 나눌 기회가 생기면 달력 API 혹은 날짜 라이브러리 등을 가져와 사용하는 게 훨씬 효율적일 것 같다.
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### -Global State Management
+아직 부분적으로만 Context API를 적용했는데 리팩토링을 통해 날짜 상태를 보다 통합적으로 관리하고, Redux 라이브러리도 사용해볼 계획이다. 
