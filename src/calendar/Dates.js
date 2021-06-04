@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {TodayConsumer} from '../contexts/today';
-import Todos from './Todos';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
@@ -59,7 +58,7 @@ const Dates = ({info, openModal}) => {
                         <TodayConsumer>
                             {({actions}) => (
                             <div className={`this ${p === today.date ? 'today' : ''}`} 
-                            onDoubleClick={() => {openModal(); actions.setTodayYear(today.year); actions.setTodayMonth(today.month + 1); actions.setTodayDate(`${p}`)}}>
+                            onDoubleClick={() => {openModal(); actions.setTodayYear(year); actions.setTodayMonth(month + 1); actions.setTodayDate(`${p}`)}}>
                                 {p}
                                 <div className="todo"></div>
                             </div>

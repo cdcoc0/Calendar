@@ -1,7 +1,7 @@
 import React, {createContext, useState} from 'react';
 
 const TodayContext = createContext({
-    state: {todayYear: 0, todayMonth: 0, todayDate: 0},
+    state: {todayYear: 2000, todayMonth: 10, todayDate: 1},
     actions: {
         setYear: () => {},
         setMonth: () => {},

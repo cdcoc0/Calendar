@@ -1,10 +1,11 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useContext} from 'react';
 import ModalItem from './ModalItem';
-import {TodayConsumer} from '../contexts/today';
+import TodayContext from '../contexts/today';
 import './styles/Modal.scss';
 
 //날짜정보 가져와야 함 -> 리덕스 필요
 const Modal = ({open, close}) => {
+    const {state} = useContext(TodayContext)
     const [modalValue, setModalValue] = useState('');
     const [todoList, setTodoList] = useState([]);
 
@@ -33,11 +34,9 @@ const Modal = ({open, close}) => {
             {open && (
                 <section>
                     <header>
-                        <TodayConsumer>
-                            {({state})=> (<div className="dateinfo">
-                                {`${state.todayYear}-${state.todayMonth < 10 ? `0${state.todayMonth}` : state.todayMonth}-${state.todayDate < 10 ? `0${state.todayDate}` : state.todayDate}`}
-                            </div>)}
-                        </TodayConsumer>
+                        <div className="dateinfo">
+                            {`${state.todayYear}-${state.todayMonth < 10 ? `0${state.todayMonth}` : state.todayMonth}-${state.todayDate < 10 ? `0${state.todayDate}` : state.todayDate}`}
+                        </div>
                     </header>
                     <form onSubmit={onSubmit}>
                         <input type="text" placeholder="todo" value={modalValue} onChange={onChange} />
