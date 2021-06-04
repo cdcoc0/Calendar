@@ -4,6 +4,10 @@ Developing calendar with Date.js
 <br />
 <br />
 
+## 🔨 Stack
+- CRA(Create React-App)
+<br /><br />
+
 ## 📸 Screenshots
 
 <div>
