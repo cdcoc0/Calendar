@@ -37,8 +37,8 @@ Date.js 객체로 달력 구현
 - Day.js를 사용해 날짜 정보의 포맷 설정
 <br />
 
-### -Context API
-- 모달에서 포커스된 날짜 정보를 구하기 위해 useContext로 현재 날짜 상태 관리
+### -Redux
+- Redux, React-Redux를 사용해 날짜 정보 전역 상태 관리
 <br />
 
 ### -CSS
@@ -51,7 +51,7 @@ Date 객체가 무한 렌더링을 야기해 이를 관리하는 과정에서 �
 <br />
 
 ### -Global State Management
-거의 모든 컴포넌트에서 Date 객체를 필요로 했기 때문에 useContext를 사용해 전역적으로 사용되는 상태 관리 방법과 그 중요성을 배웠다.
+Context API, Redux로 날짜 정보를 관리함으로써 전역 상태 관리 방법을 배웠고, 그 편리함과 중요성을 깨달았다.
 <br />
 
 ### -Developing UI
@@ -69,7 +69,3 @@ DB 연동 없이 만들었기 때문에 데이터를 저장할 수가 없어 구
 
 ### -Date.js
 Date 객체의 무한 렌더링 때문에 setInterval을 설정할 수밖에 없었는데, 굉장히 큰 자원 낭비라고 느꼈다. 후에 백엔드로 나눌 기회가 생기면 달력 API 혹은 날짜 라이브러리 등을 가져와 사용하는 게 훨씬 효율적일 것 같다.
-<br />
-
-### -Global State Management
-아직 부분적으로만 Context API를 적용했는데 리팩토링을 통해 날짜 상태를 보다 통합적으로 관리하고, Redux 라이브러리도 사용해볼 계획이다. 
