@@ -4,6 +4,7 @@ import Background from './Background';
 import Month from './Month';
 import MonthContainer from '../containers/MonthContainer';
 import Dates from './Dates';
+import DatesContainer from '../containers/DatesContainer';
 import Modal from './Modal';
 import {MdNavigateBefore} from 'react-icons/md';
 import './styles/Calendar.scss';
@@ -80,7 +81,8 @@ const Calendar = () => {
                         <div className="daysArray">
                             {daysArray.map(d => <div key={d} className="days">{d}</div>)}
                         </div>
-                        <Dates info={info} openModal={openModal} />
+                        {/* <Dates info={info} openModal={openModal} /> */}
+                        <DatesContainer openModal={openModal} />
                     </div>
                 </div>
                 <Modal open={modalCtrl} close={closeModal} />

@@ -16,11 +16,11 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({info, openModal}) => {
-    const {year, month, date} = info;
+const Dates = ({year, month, dates, openModal}) => {
+    //const {year, month, date} = info;
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState({year, month, date});
+    const [today, setToday] = useState({year, month, dates});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -43,7 +43,7 @@ const Dates = ({info, openModal}) => {
             setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
         //setToday({year, month: month + 1, date});
         return () => clearInterval(oneMinCall);
-    }, [year, month, date, getPage]);
+    }, [year, month, dates, getPage]);
 
     const initPage = useCallback(() => {
         //console.log(page);
