@@ -16,11 +16,10 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({year, month, dates, openModal}) => {
-    //const {year, month, date} = info;
+const Dates = ({year, month, initDate, openModal}) => {
     const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
     const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
-    const [today, setToday] = useState({year, month, dates});
+    const [today, setToday] = useState({year, month, initDate});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -41,12 +40,10 @@ const Dates = ({year, month, dates, openModal}) => {
         const oneMinCall = setInterval(() => {
             setPrevLast({date: new Date(year, month, 0)});
             setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
-        //setToday({year, month: month + 1, date});
         return () => clearInterval(oneMinCall);
-    }, [year, month, dates, getPage]);
+    }, [year, month, initDate, getPage]);
 
     const initPage = useCallback(() => {
-        //console.log(page);
         const firstDateIndex = page.indexOf(1);
         const lastDateIndex = page.lastIndexOf(thisLast.date.getDate());
         if(!page) {return;}
@@ -54,10 +51,10 @@ const Dates = ({year, month, dates, openModal}) => {
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
-                    <div key={index} onClick={() => setToday({...today, date: p})} className="dateBlock">
+                    <div key={index} onClick={() => setToday({...today, initDate: p})} className="dateBlock">
                         <TodayConsumer>
                             {({actions}) => (
-                            <div className={`this ${p === today.date ? 'today' : ''}`} 
+                            <div className={`this ${p === today.initDate ? 'today' : ''}`} 
                             onDoubleClick={() => {openModal(); actions.setTodayYear(year); actions.setTodayMonth(month + 1); actions.setTodayDate(`${p}`)}}>
                                 {p}
                                 <div className="todo"></div>
@@ -72,7 +69,7 @@ const Dates = ({year, month, dates, openModal}) => {
                 );
             }
         }));
-    }, [page, thisLast, today, openModal]);
+    }, [page, thisLast, today, openModal, month, year]);
 
     return (
         <div className="Dates">

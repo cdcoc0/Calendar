@@ -9,7 +9,7 @@ const date = new Date();
 const initialState = {
     year: date.getFullYear(),
     month: date.getMonth(),
-    dates: date.getDate()
+    initDate: date.getDate(),
 };
 
 function dateInfo(state = initialState, action) {
