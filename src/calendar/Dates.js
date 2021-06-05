@@ -16,17 +16,15 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({year, month, initDate, openModal}) => {
-    const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
-    const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
+const Dates = ({year, month, initDate, prevLast, thisLast, openModal}) => {
     const [today, setToday] = useState({year, month, initDate});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
-        const plDate = prevLast.date.getDate();
-        const plDay = prevLast.date.getDay();
-        const tlDate = thisLast.date.getDate();
-        const tlDay = thisLast.date.getDay();
+        const plDate = prevLast.getDate();
+        const plDay = prevLast.getDay();
+        const tlDate = thisLast.getDate();
+        const tlDay = thisLast.getDay();
         const prev = [];
         const current = [...Array(tlDate + 1).keys()].slice(1);
         const next = [];
@@ -37,17 +35,12 @@ const Dates = ({year, month, initDate, openModal}) => {
     
     useEffect(() => {
         getPage();
-        const oneMinCall = setInterval(() => {
-            setPrevLast({date: new Date(year, month, 0)});
-            setThisLast({date: new Date(year, month + 1, 0)});}, 1000);
-        return () => clearInterval(oneMinCall);
     }, [year, month, initDate, getPage]);
 
     const initPage = useCallback(() => {
         const firstDateIndex = page.indexOf(1);
-        const lastDateIndex = page.lastIndexOf(thisLast.date.getDate());
+        const lastDateIndex = page.lastIndexOf(thisLast.getDate());
         if(!page) {return;}
-        //console.log(firstDateIndex, lastDateIndex);
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
