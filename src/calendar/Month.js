@@ -5,7 +5,6 @@ import './styles/Month.scss';
 
 const Month = ({year, month, onIncrease, onDecrease}) => {
     const formMonth = dayjs(`${month + 1}`).format('MMMM')
-    //const formMonth = dayjs(`${state.initDate.getMonth() + 1}`).format('MMMM')
     return (
         <div className="Header">
             <div onClick={onDecrease}><IoCaretBackSharp /></div>

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import {TodayProvider} from '../contexts/today';
 import Background from './Background';
 import Month from './Month';
+import MonthContainer from '../containers/MonthContainer';
 import Dates from './Dates';
 import Modal from './Modal';
 import {MdNavigateBefore} from 'react-icons/md';
@@ -69,7 +70,8 @@ const Calendar = () => {
         <TodayProvider>
             <div className="Calendar">
                 <Background />
-                <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} />
+                {/* <Month year={info.year} month={info.month} onIncrease={onMonthIncrease} onDecrease={onMonthDecrease} /> */}
+                <MonthContainer />
                 <div className="navSpace">
                     <div className="nav">
                         {/* <MdNavigateBefore /> */}
