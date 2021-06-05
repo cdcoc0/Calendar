@@ -16,8 +16,8 @@ const getNextDates = (tlDay, next) => {
     }
 };
 
-const Dates = ({year, month, initDate, prevLast, thisLast, openModal}) => {
-    const [today, setToday] = useState({year, month, initDate});
+const Dates = ({year, month, initDate, prevLast, thisLast, today, onDateClick, openModal}) => {
+    //const [today, setToday] = useState({year, month, initDate});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -44,10 +44,11 @@ const Dates = ({year, month, initDate, prevLast, thisLast, openModal}) => {
         return (page.map((p, index) => {
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
-                    <div key={index} onClick={() => setToday({...today, initDate: p})} className="dateBlock">
+                    <div key={index} onClick={() => onDateClick(p)} className="dateBlock">
+                        {/* setToday({...today, initDate: p}) */}
                         <TodayConsumer>
                             {({actions}) => (
-                            <div className={`this ${p === today.initDate ? 'today' : ''}`} 
+                            <div className={`this ${p === today.date ? 'today' : ''}`} 
                             onDoubleClick={() => {openModal(); actions.setTodayYear(year); actions.setTodayMonth(month + 1); actions.setTodayDate(`${p}`)}}>
                                 {p}
                                 <div className="todo"></div>

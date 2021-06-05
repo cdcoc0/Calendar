@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useCallback} from 'react';
-import {TodayProvider} from '../contexts/today';
+import React, {useState} from 'react';
+//import {TodayProvider} from '../contexts/today';
 import Background from './Background';
 import MonthContainer from '../containers/MonthContainer';
 import DatesContainer from '../containers/DatesContainer';
-import Modal from './Modal';
+import ModalContainer from '../containers/ModalContainer';
 import {MdNavigateBefore} from 'react-icons/md';
 import './styles/Calendar.scss';
 
@@ -20,24 +20,22 @@ const Calendar = () => {
     };
 
     return (
-        <TodayProvider>
-            <div className="Calendar">
-                <Background />
-                <MonthContainer />
-                <div className="navSpace">
-                    <div className="nav">
-                        {/* <MdNavigateBefore /> */}
-                    </div>
-                    <div className="body">
-                        <div className="daysArray">
-                            {daysArray.map(d => <div key={d} className="days">{d}</div>)}
-                        </div>
-                        <DatesContainer openModal={openModal} />
-                    </div>
+        <div className="Calendar">
+            <Background />
+            <MonthContainer />
+            <div className="navSpace">
+                <div className="nav">
+                    {/* <MdNavigateBefore /> */}
                 </div>
-                <Modal open={modalCtrl} close={closeModal} />
+                <div className="body">
+                    <div className="daysArray">
+                        {daysArray.map(d => <div key={d} className="days">{d}</div>)}
+                    </div>
+                    <DatesContainer openModal={openModal} />
+                </div>
             </div>
-        </TodayProvider>
+            <ModalContainer open={modalCtrl} close={closeModal} />
+        </div>
     );
 }
 

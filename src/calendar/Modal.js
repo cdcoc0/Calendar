@@ -4,8 +4,8 @@ import TodayContext from '../contexts/today';
 import './styles/Modal.scss';
 
 //날짜정보 가져와야 함 -> 리덕스 필요
-const Modal = ({open, close}) => {
-    const {state} = useContext(TodayContext)
+const Modal = ({today, open, close}) => {
+    //const {state} = useContext(TodayContext)
     const [modalValue, setModalValue] = useState('');
     const [todoList, setTodoList] = useState([]);
 
@@ -35,7 +35,7 @@ const Modal = ({open, close}) => {
                 <section>
                     <header>
                         <div className="dateinfo">
-                            {`${state.todayYear}-${state.todayMonth < 10 ? `0${state.todayMonth}` : state.todayMonth}-${state.todayDate < 10 ? `0${state.todayDate}` : state.todayDate}`}
+                            {`${today.year}-${today.month + 1 < 10 ? `0${today.month + 1}` : today.month + 1}-${today.date < 10 ? `0${today.date}` : today.date}`}
                         </div>
                     </header>
                     <form onSubmit={onSubmit}>

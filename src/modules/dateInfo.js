@@ -1,10 +1,10 @@
 const INCREASEMONTH = 'dateInfo/INCREASEMONTH';
 const DECREASEMONTH = 'dateInfo/DECREASEMONTH';
+const ONDATECLICK = 'dateInfo/ONDATECLICK';
 
 export const increaseMonth = () => ({type: INCREASEMONTH});
 export const decreaseMonth = () => ({type: DECREASEMONTH});
-// const [prevLast, setPrevLast] = useState({date: new Date(year, month, 0)});
-// const [thisLast, setThisLast] = useState({date: new Date(year, month + 1, 0)});
+export const onDateClick = p => ({type: ONDATECLICK, p});
 
 const date = new Date();
 const getPrevLast = (y, m) => {
@@ -19,7 +19,8 @@ const initialState = {
     month: date.getMonth(),
     initDate: date.getDate(),
     prevLast: getPrevLast(date.getFullYear(), date.getMonth()),
-    thisLast: getThisLast(date.getFullYear(), date.getMonth())
+    thisLast: getThisLast(date.getFullYear(), date.getMonth()),
+    today: {year: date.getFullYear(), month: date.getMonth(), date: date.getDate()}
 };
 
 function dateInfo(state = initialState, action) {
@@ -41,6 +42,15 @@ function dateInfo(state = initialState, action) {
                 month: date.getMonth(),
                 prevLast: getPrevLast(date.getFullYear(), date.getMonth()),
                 thisLast: getThisLast(date.getFullYear(), date.getMonth())
+            }
+        case ONDATECLICK:
+            return {
+                ...state,
+                today: {
+                    year: state.year,
+                    month: state.month,
+                    date: action.p
+                }
             }
         default:
             return state;
