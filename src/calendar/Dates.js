@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {TodayConsumer} from '../contexts/today';
+// import {TodayConsumer} from '../contexts/today';
 import './styles/Dates.scss';
 
 const getPrevDates = (plDay, plDate, prev) => {
@@ -17,7 +17,6 @@ const getNextDates = (tlDay, next) => {
 };
 
 const Dates = ({year, month, initDate, prevLast, thisLast, today, onDateClick, openModal}) => {
-    //const [today, setToday] = useState({year, month, initDate});
     const [page, setPage] = useState([]);
 
     const getPage = useCallback(() => {
@@ -45,16 +44,11 @@ const Dates = ({year, month, initDate, prevLast, thisLast, today, onDateClick, o
             if(index >= firstDateIndex && index < lastDateIndex + 1) {
                 return (
                     <div key={index} onClick={() => onDateClick(p)} className="dateBlock">
-                        {/* setToday({...today, initDate: p}) */}
-                        <TodayConsumer>
-                            {({actions}) => (
-                            <div className={`this ${p === today.date ? 'today' : ''}`} 
-                            onDoubleClick={() => {openModal(); actions.setTodayYear(year); actions.setTodayMonth(month + 1); actions.setTodayDate(`${p}`)}}>
-                                {p}
-                                <div className="todo"></div>
-                            </div>
-                            )}
-                        </TodayConsumer>
+                        <div className={`this ${p === today.date ? 'today' : ''}`} 
+                        onDoubleClick={openModal}>
+                            {p}
+                            <div className="todo"></div>
+                        </div>
                     </div>
                 );
             } else {
@@ -63,7 +57,7 @@ const Dates = ({year, month, initDate, prevLast, thisLast, today, onDateClick, o
                 );
             }
         }));
-    }, [page, thisLast, today, openModal, month, year]);
+    }, [page, thisLast, today, openModal, onDateClick]);
 
     return (
         <div className="Dates">
